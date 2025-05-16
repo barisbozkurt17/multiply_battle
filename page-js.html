@@ -1,0 +1,289 @@
+<script>
+  function myFunction(element) {
+    var player1=kontrol("p1");
+    var player2=kontrol("p2");
+    if(document.getElementById("uyari").innerHTML != "Savaş Başlıyor..."){
+      return false;
+    };
+    if (element.id.substring(0, 2)=="p1"&&player1==false){
+      if(player2!=false){
+        var sonuc=Number(element.innerHTML)*Number(player2.innerHTML);
+        if(isaretle(sonuc).className==""){
+          player2.className="p2";
+          element.className="basili"
+          isaretle(sonuc).className="p1"
+          if(dikeykazanan(isaretle(sonuc).id) || yataykazanan(isaretle(sonuc).id) || capraz1(isaretle(sonuc).id) || 
+          capraz2(isaretle(sonuc).id)){
+            document.getElementById("uyari").innerHTML="1. Oyuncu Kazandı!!"
+            alert("Kazandın");
+          }
+        }else{
+          var hata=Number(document.getElementById("hata1").innerHTML.substring(5,6))+1;
+          if(hata==3){
+            alert("Kaybettin");
+            document.getElementById("uyari").innerHTML="2. Oyuncu Kazandı!!"
+          }else{
+            alert("Başka bir tuş seçiniz");
+            document.getElementById("hata1").innerHTML="Hata:" + hata;
+          };
+          
+        };
+      }else{
+        element.className="basili";
+      };
+
+    }else if(element.id.substring(0, 2)=="p2"&&player2==false){
+
+      if(player1!=false){
+        var sonuc=Number(player1.innerHTML)*Number(element.innerHTML);
+        if(isaretle(sonuc).className==""){
+          element.className="basili";
+          player1.className="p1";
+          isaretle(sonuc).className="p2"
+          if(dikeykazanan(isaretle(sonuc).id) || yataykazanan(isaretle(sonuc).id) || capraz1(isaretle(sonuc).id) || 
+          capraz2(isaretle(sonuc).id)){
+            document.getElementById("uyari").innerHTML="2. Oyuncu Kazandı!!"
+            alert("Kazandın");
+          }
+        }else{
+          var hata=Number(document.getElementById("hata2").innerHTML.substring(5,6))+1;
+          if(hata==3){
+            alert("Kaybettin");
+            document.getElementById("uyari").innerHTML="1. Oyuncu Kazandı!!"
+          }else{
+            alert("Başka bir tuş seçiniz");
+            document.getElementById("hata2").innerHTML="Hata:" + hata;
+          };
+        };
+      }else{
+        element.className="basili";
+      };
+    }
+
+  };
+
+    function kontrol(user){
+     for (k=1;k<10;k++){
+        var tus = user + k;
+        var myElement = document.getElementById(tus);
+        if(myElement.className=="basili"){
+          return myElement;
+        };
+      };
+      return false;
+
+    };
+    
+    function isaretle(sonuc){
+      for (i=1;i<7;i++){
+        for(j=1;j<7;j++){
+          var tus = "t" + i+j;
+          var myElement = document.getElementById(tus);
+          if(myElement.innerHTML==Number(sonuc)){
+            return myElement;
+          };
+        };
+      };
+    };
+    
+    function dikeykazanan(sonuc){
+        var i=Number(sonuc.substring(1, 2));
+        var j=Number(sonuc.substring(2, 3));
+        if(i>2){
+          var r1 = document.getElementById("t" + (i-2)+j).className; 
+        }else{
+          var r1=""
+        };
+        if(i>1){
+          var r2 = document.getElementById("t" + (i-1)+j).className; 
+        }else{
+          var r2=""
+        };
+        var r3 = document.getElementById("t" + i+j).className;
+        if(i<6){
+          var r4 = document.getElementById("t" + (i+1)+j).className; 
+        }else{
+          var r4=""
+        };
+        if(i<5){
+          var r5 = document.getElementById("t" + (i+2)+j).className; 
+        }else{
+          var r5=""
+        };
+        if((r1==r2 && r2==r3 && r3!="")||(r2==r3 && r3==r4 && r4!="")||(r3==r4 && r4==r5 && r5!="")){
+          return true;
+        }else{
+          false;
+        };
+ 
+    };
+    function yataykazanan(sonuc){
+        var i=Number(sonuc.substring(1, 2));
+        var j=Number(sonuc.substring(2, 3));
+        if(j>2){
+          var r1 = document.getElementById("t" + i + (j-2)).className; 
+        }else{
+          var r1=""
+        };
+        if(j>1){
+          var r2 = document.getElementById("t" + i + (j-1)).className; 
+        }else{
+          var r2=""
+        };
+        var r3 = document.getElementById("t" + i+j).className;
+        if(j<6){
+          var r4 = document.getElementById("t" + i + (j+1)).className; 
+        }else{
+          var r4=""
+        };
+        if(j<5){
+          var r5 = document.getElementById("t" + i + (j+2)).className; 
+        }else{
+          var r5=""
+        };
+        if((r1==r2 && r2==r3 && r3!="")||(r2==r3 && r3==r4 && r4!="")||(r3==r4 && r4==r5 && r5!="")){
+          return true;
+        }else{
+          false;
+        };
+ 
+    };
+
+    function capraz1(sonuc){
+        var i=Number(sonuc.substring(1, 2));
+        var j=Number(sonuc.substring(2, 3));
+        if(j>2 && i>2){
+          var r1 = document.getElementById("t" + (i-2) + (j-2)).className; 
+        }else{
+          var r1=""
+        };
+        if(j>1 && i>1){
+          var r2 = document.getElementById("t" + (i-1) + (j-1)).className; 
+        }else{
+          var r2=""
+        };
+        var r3 = document.getElementById("t" + i+j).className;
+        if(j<6 && i<6){
+          var r4 = document.getElementById("t" + (i+1) + (j+1)).className; 
+        }else{
+          var r4=""
+        };
+        if(j<5 && i<5){
+          var r5 = document.getElementById("t" + (i+2) + (j+2)).className; 
+        }else{
+          var r5=""
+        };
+        if((r1==r2 && r2==r3 && r3!="")||(r2==r3 && r3==r4 && r4!="")||(r3==r4 && r4==r5 && r5!="")){
+          return true;
+        }else{
+          false;
+        };
+ 
+    };
+        function capraz2(sonuc){
+          var i=Number(sonuc.substring(1, 2));
+          var j=Number(sonuc.substring(2, 3));
+          if(j>2 && i<5){
+            var r1 = document.getElementById("t" + (i+2) + (j-2)).className; 
+          }else{
+            var r1=""
+          };
+          if(j>1 && i<6){
+            var r2 = document.getElementById("t" + (i+1) + (j-1)).className; 
+          }else{
+            var r2=""
+          };
+          var r3 = document.getElementById("t" + i+j).className;
+          if(j<6 && i>1){
+            var r4 = document.getElementById("t" + (i-1) + (j+1)).className; 
+          }else{
+            var r4=""
+          };
+          if(j<5 && i>2){
+            var r5 = document.getElementById("t" + (i-2) + (j+2)).className; 
+          }else{
+            var r5=""
+          };
+          if((r1==r2 && r2==r3 && r3!="")||(r2==r3 && r3==r4 && r4!="")||(r3==r4 && r4==r5 && r5!="")){
+            return true;
+          }else{
+            false;
+          };
+        };
+
+        function baslat(){
+          document.getElementById("uyari").innerHTML= "Savaş Başlıyor..."
+          document.getElementById("hata1").innerHTML="Hata:0";
+          document.getElementById("hata2").innerHTML="Hata:0";
+          for (i=1;i<7;i++){
+            for(j=1;j<7;j++){
+              var tus = "t" + i+j;
+              var myElement = document.getElementById(tus).className="";
+            };
+          };
+          for (k=1;k<10;k++){
+              var tus = "p1" + k;
+              var myElement = document.getElementById(tus);
+              myElement.className="p1"
+          };
+          for (k=1;k<10;k++){
+              var tus = "p2" + k;
+              var myElement = document.getElementById(tus);
+              myElement.className="p2"
+          };
+          karistir();
+        };
+
+      function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+
+          // Pick a remaining element.
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex--;
+
+          // And swap it with the current element.
+          [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]];
+        }
+
+        return array;
+      }
+
+      function karistir(){
+        var sayilar=[1,2,3,4,5,6,7,8,9,10,12,14,
+                    15,16,18,20,21,24,25,27,28,30,
+                    32,35,36,40,42,45,48,49,54,56,63,64,72,81];
+        shuffle(sayilar);
+        var sayi=0;
+        for (i=1;i<7;i++){
+          for(j=1;j<7;j++){
+            var tus = "t" + i+j;
+            var myElement = document.getElementById(tus);
+            myElement.innerHTML=sayilar[sayi];
+            sayi++;
+          };
+        }; 
+      };
+      document.addEventListener("DOMContentLoaded",function(){
+         karistir();         
+      }); 
+
+
+
+</script><!---
+
+    var getStyle = function(element, property) {
+    return window.getComputedStyle ? window.getComputedStyle(element, null).getPropertyValue(property) : element.style[property.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); })];
+};
+    var backgroundColor = getStyle(element, "background-color");
+          alert(backgroundColor)
+
+    alert(element.id.substring(0, 2));    bastan kelime aldık
+    alert(element.innerHTML)      içindeki metin
+const myElement = document.getElementById(tus);        tuşa bağlandık
+        myElement.style.backgroundColor = "red"       rengini değiştirdik.
+  element.innerHTML ="Baris"    içine yazı yazdık.
+-->
