@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    
+    <!--Bu kısımdaki linkler ve yazılar materializecss sitesindeki resimlere ulaşmak için gerekli. -->
+    
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+     <!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <?!= include("page-css");  ?>
+  <body>
+    <div class="container">
+      <h4>Çarpım Savaşları</h4>
+      <table align="center">
+        <tr>
+          <td><button type="button" id="user1" class="p1">Player1</button></td>
+          <td><button type="button" id="hata1" class="p1">Hata:0</button></td>
+          <td colspan="6" id="uyari">Savaş Başlıyor...</td>
+          <td><button type="button" id="hata2" class="p2">Hata:0</button></td>
+          <td><button type="button" id="user2" class="p2">Player2</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p11" class="p1">1</button></td>
+          <td colspan="8"></td>
+          <td><button type="button" onclick="myFunction(this)" id="p21" class="p2">1</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p12" class="p1">2</button></td>
+          <td></td>
+          <td><button type="button" id="t11" >1</button></td>
+          <td><button type="button" id="t12" >2</button></td>
+          <td><button type="button" id="t13" >3</button></td>
+          <td><button type="button" id="t14" >4</button></td>
+          <td><button type="button" id="t15" >5</button></td>
+          <td><button type="button" id="t16" >6</button></td>
+          <td></td>
+          <td><button type="button" onclick="myFunction(this)" id="p22" class="p2">2</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p13" class="p1">3</button></td>
+          <td></td>
+          <td><button type="button" id="t21" >7</button></td>
+          <td><button type="button" id="t22" >8</button></td>
+          <td><button type="button" id="t23" >9</button></td>
+          <td><button type="button" id="t24" >10</button></td>
+          <td><button type="button" id="t25" >12</button></td>
+          <td><button type="button" id="t26" >14</button></td>
+          <td></td>
+          <td><button type="button" onclick="myFunction(this)" id="p23"  class="p2">3</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p14" class="p1">4</button></td>
+          <td></td>
+          <td><button type="button" id="t31" >15</button></td>
+          <td><button type="button" id="t32" >16</button></td>
+          <td><button type="button" id="t33" >18</button></td>
+          <td><button type="button" id="t34" >20</button></td>
+          <td><button type="button" id="t35" >21</button></td>
+          <td><button type="button" id="t36" >24</button></td>
+          <td></td>
+          <td><button type="button" onclick="myFunction(this)" id="p24" class="p2">4</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p15" class="p1">5</button></td>
+          <td></td>
+          <td><button type="button" id="t41" >25</button></td>
+          <td><button type="button" id="t42" >27</button></td>
+          <td><button type="button" id="t43" >28</button></td>
+          <td><button type="button" id="t44" >30</button></td>
+          <td><button type="button" id="t45" >32</button></td>
+          <td><button type="button" id="t46" >35</button></td>
+          <td></td>
+          <td><button type="button" onclick="myFunction(this)" id="p25" class="p2">5</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p16"  class="p1">6</button></td>
+          <td></td>
+          <td><button type="button" id="t51" >36</button></td>
+          <td><button type="button" id="t52" >40</button></td>
+          <td><button type="button" id="t53" >42</button></td>
+          <td><button type="button" id="t54" >45</button></td>
+          <td><button type="button" id="t55" >48</button></td>
+          <td><button type="button" id="t56" >49</button></td>
+          <td></td>
+          <td><button type="button" onclick="myFunction(this)" id="p26" class="p2">6</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p17" class="p1">7</button></td>
+          <td></td>
+          <td><button type="button" id="t61" >54</button></td>
+          <td><button type="button" id="t62" >56</button></td>
+          <td><button type="button" id="t63" >63</button></td>
+          <td><button type="button" id="t64" >64</button></td>
+          <td><button type="button" id="t65" >72</button></td>
+          <td><button type="button" id="t66" >81</button></td>
+          <td></td>
+          <td><button type="button" onclick="myFunction(this)" id="p27" class="p2">7</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p18" class="p1">8</button></td>
+          <td colspan="8"></td>
+          <td><button type="button" onclick="myFunction(this)" id="p28" class="p2">8</button></td>
+        </tr>
+        <tr>
+          <td><button type="button" onclick="myFunction(this)" id="p19" class="p1">9</button></td>
+          <td colspan="3"></td>
+          <td colspan="2"><button type="button" onclick="baslat()" class="baslat">Başlat</button></td>
+          <td colspan="3"></td>
+          <td><button type="button" onclick="myFunction(this)" id="p29" class="p2">9</button></td>
+        </tr>
+      </table>
+    </div>
+      <?!= include("page-js");  ?>
+  </body>
+</html>
